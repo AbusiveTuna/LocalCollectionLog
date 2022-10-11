@@ -14,10 +14,17 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Example"
+	name = "Collection Log Command"
+	description = "Enables collection log chat command",
+	tags = {"chat", "commands", "collection", "log"}
 )
 public class ExamplePlugin extends Plugin
 {
+	
+	private static final String COLLECTION_LOG_COMMAND = "!clog";
+
+	private int[] pets;
+
 	@Inject
 	private Client client;
 
@@ -27,13 +34,14 @@ public class ExamplePlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Example started!");
+	
+	
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Example stopped!");
+	
 	}
 
 	@Subscribe
@@ -41,9 +49,10 @@ public class ExamplePlugin extends Plugin
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Example says " + config.greeting(), null);
+
 		}
 	}
+	
 
 	@Provides
 	ExampleConfig provideConfig(ConfigManager configManager)
